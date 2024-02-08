@@ -38,6 +38,7 @@ dependencyManagement {
 
 dependencies {
     testAnnotationProcessor('org.projectlombok:lombok:1.18.18')
+    testImplementation group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '12.6.0.jre11'
     testImplementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign'
     testImplementation('org.projectlombok:lombok:1.18.18')
     testImplementation("com.squareup.okhttp3:okhttp:4.9.0")

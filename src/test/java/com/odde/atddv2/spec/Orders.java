@@ -11,6 +11,7 @@ public class Orders {
 
     @Global
     public static class 订单 extends Spec<Order> {
+        @Override
         public void main() {
             property("id").ignore();
         }
