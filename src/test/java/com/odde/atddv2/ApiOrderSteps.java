@@ -6,6 +6,7 @@ import com.odde.atddv2.entity.User;
 import com.odde.atddv2.repo.UserRepo;
 import io.cucumber.docstring.DocString;
 import io.cucumber.java.Before;
+import io.cucumber.java.zh_cn.假如;
 import io.cucumber.java.zh_cn.并且;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class ApiOrderSteps {
         ObjectMapper objectMapper = new ObjectMapper();
         restfulStep.setBaseUrl("http://localhost:10081");
         restfulStep.post("/users/login", DocString.create(objectMapper.writeValueAsString(defaultUser)));
-        String token = restfulStep.response("headers.Token");
+        String token = restfulStep.response("headers.token");
         restfulStep.header("token", token);
         restfulStep.setBaseUrl("http://localhost:10081/api");
     }
@@ -52,4 +53,8 @@ public class ApiOrderSteps {
                 .withQueryStringParameter("number", deliverNo), json);
     }
 
+    @假如("token为{string}")
+    public void token为(String token) {
+        restfulStep.header("token", token);
+    }
 }

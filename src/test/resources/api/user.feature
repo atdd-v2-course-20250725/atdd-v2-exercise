@@ -24,3 +24,24 @@
       }
     }
     """
+
+  场景: 订单列表 - 401 without token
+    假如存在"订单":
+      | code  | productName | total | status        |
+      | SN001 | 电脑          | 19999 | toBeDelivered |
+    当GET "/orders"
+    那么response should be:
+    """
+    code= 401
+    """
+
+  场景: 订单列表 - 401 with invalid token
+    假如存在"订单":
+      | code  | productName | total | status        |
+      | SN001 | 电脑          | 19999 | toBeDelivered |
+    假如token为"invalid"
+    当GET "/orders"
+    那么response should be:
+    """
+    code= 401
+    """
