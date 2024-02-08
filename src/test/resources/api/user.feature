@@ -17,7 +17,10 @@
     : {
       code: 200
       headers: {
-        token: hello-world
+        token.base64.json: {
+          user: tom
+          now: *
+        }
       }
     }
     """

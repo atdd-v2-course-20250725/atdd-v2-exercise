@@ -32,7 +32,6 @@ configurations {
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:2020.0.2"
-        mavenBom "com.github.leeonky:java-TD-tools-dependencies:0.0.8"
     }
 }
 
@@ -43,21 +42,28 @@ dependencies {
     testImplementation('org.projectlombok:lombok:1.18.18')
     testImplementation("com.squareup.okhttp3:okhttp:4.9.0")
     testImplementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'com.vaadin.external.google', module: 'android-json'
+        exclude group: 'org.skyscreamer', module: 'jsonassert'
+    }
     testImplementation("mysql:mysql-connector-java:8.0.13")
     testImplementation("io.cucumber:cucumber-java:6.10.2")
     testImplementation("io.cucumber:cucumber-spring:6.10.2")
     testImplementation("org.assertj:assertj-core:3.19.0")
     testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     testImplementation "org.awaitility:awaitility:4.0.3"
-    testImplementation group: 'org.skyscreamer', name: 'jsonassert', version: '1.5.0'
-    testImplementation group: 'org.mock-server', name: 'mockserver-client-java', version: '5.13.2'
-    testImplementation "com.github.leeonky:jfactory"
-    testImplementation 'com.github.leeonky:DAL-java'
-    testImplementation "com.github.leeonky:jfactory-cucumber"
-    testImplementation "com.github.leeonky:jfactory-repo-jpa"
-    testImplementation "com.github.leeonky:RESTful-cucumber"
-    testImplementation 'com.github.leeonky:DAL-extension-basic'
+    testImplementation('org.skyscreamer:jsonassert:1.5.0') {
+        exclude group: 'com.vaadin.external.google', module: 'android-json'
+    }
+    testImplementation('org.mock-server:mockserver-client-java:5.13.2') {
+        exclude group: 'org.skyscreamer', module: 'jsonassert'
+    }
+    testImplementation 'com.github.leeonky:jfactory:0.3.20'
+    testImplementation 'com.github.leeonky:DAL-java:0.3.21'
+    testImplementation 'com.github.leeonky:jfactory-cucumber:0.1.24'
+    testImplementation 'com.github.leeonky:jfactory-repo-jpa:0.1.14'
+    testImplementation 'com.github.leeonky:RESTful-cucumber:0.0.19'
+    testImplementation 'com.github.leeonky:DAL-extension-basic:0.0.12'
     testImplementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.11.4'
 }
 

@@ -3,7 +3,7 @@ package com.odde.atddv2;
 import com.github.leeonky.jfactory.DataRepository;
 import com.github.leeonky.jfactory.JFactory;
 import com.github.leeonky.jfactory.Spec;
-import com.github.leeonky.util.BeanClass;
+import com.github.leeonky.util.Classes;
 
 public class EntityFactory extends JFactory {
 
@@ -13,6 +13,6 @@ public class EntityFactory extends JFactory {
     }
 
     private void configFactory() {
-        BeanClass.subTypesOf(Spec.class, "com.odde.atddv2.spec").forEach(c -> register((Class) c));
+        Classes.subTypesOf(Spec.class, "com.odde.atddv2.spec").forEach(c -> register((Class) c));
     }
 }
