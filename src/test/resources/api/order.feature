@@ -17,6 +17,42 @@
     }]
     """
 
+  场景: 订单录单
+    当POST "/orders":
+    """
+    {
+        "code": "SN001",
+        "productName": "电脑",
+        "total": 19999,
+        "status": "toBeDelivered",
+        "recipientName": "Tom",
+        "lines": [{
+          "itemName": "PC",
+          "price": 19999,
+          "quantity": 1
+        }]
+    }
+    """
+    那么response should be:
+    """
+    code= 200
+    """
+    那么所有"订单"应为:
+    """
+    :[{
+        "code": "SN001",
+        "productName": "电脑",
+        "total": 19999,
+        "status": "toBeDelivered",
+        "recipientName": "Tom",
+        "lines": [{
+          "itemName": "PC"
+          "price": 19999
+          "quantity": 1
+        }]
+    }]
+    """
+
   场景: 订单详情 - 无物流
     假如存在"未发货的 订单":
       | code  | productName | total | recipientName | recipientMobile | recipientAddress |
@@ -44,6 +80,10 @@
     {
       "deliverNo": "SF001"
     }
+    """
+    那么response should be:
+    """
+    code: 200
     """
     那么所有"订单"应为:
     """
