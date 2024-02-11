@@ -65,6 +65,11 @@ dependencies {
     testImplementation 'com.github.leeonky:RESTful-cucumber:0.0.19'
     testImplementation 'com.github.leeonky:DAL-extension-basic:0.0.12'
     testImplementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.11.4'
+
+    testImplementation 'io.grpc:grpc-netty:1.61.1'
+    testImplementation 'io.grpc:grpc-protobuf:1.61.1'
+    testImplementation 'io.grpc:grpc-stub:1.61.1'
+    testImplementation 'io.grpc:grpc-services:1.61.1'
 }
 
 task cucumber(type: JavaExec) {

@@ -8,11 +8,15 @@ import io.cucumber.docstring.DocString;
 import io.cucumber.java.Before;
 import io.cucumber.java.zh_cn.假如;
 import io.cucumber.java.zh_cn.并且;
+import io.grpc.Server;
+import io.grpc.ServerBuilder;
+import io.grpc.protobuf.services.ProtoReflectionService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.annotation.PostConstruct;
+import java.util.concurrent.TimeUnit;
 
 public class ApiOrderSteps {
 
@@ -56,5 +60,25 @@ public class ApiOrderSteps {
     @假如("token为{string}")
     public void token为(String token) {
         restfulStep.header("token", token);
+    }
+
+    @SneakyThrows
+    @并且("存在grpc服务:")
+    public void 存在grpc服务(String body) {
+        new Thread(ApiOrderSteps::runGrpc).start();
+        TimeUnit.SECONDS.sleep(5);
+//        runGrpc();
+    }
+
+    @SneakyThrows
+    private static void runGrpc() {
+        Server server = ServerBuilder
+                .forPort(3254)
+                .addService(new GreetingImpl())
+                .addService(ProtoReflectionService.newInstance())
+                .build();
+
+        server.start();
+        server.awaitTermination();
     }
 }
