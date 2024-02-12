@@ -87,7 +87,7 @@ public class ApiOrderSteps {
     public void 打桩grpc服务(String grpcStub) {
         RestfulStep restfulStep = new RestfulStep();
         restfulStep.setBaseUrl("http://localhost:4771");
-        restfulStep.get("/clear");
-        restfulStep.post("/add", grpcStub);
+        restfulStep.delete("/api/stubs");
+        restfulStep.post("/api/stubs", grpcStub);
     }
 }
