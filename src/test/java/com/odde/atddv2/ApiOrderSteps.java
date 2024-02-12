@@ -81,4 +81,13 @@ public class ApiOrderSteps {
         server.start();
         server.awaitTermination();
     }
+
+    @SneakyThrows
+    @并且("打桩grpc服务:")
+    public void 打桩grpc服务(String grpcStub) {
+        RestfulStep restfulStep = new RestfulStep();
+        restfulStep.setBaseUrl("http://localhost:4771");
+        restfulStep.get("/clear");
+        restfulStep.post("/add", grpcStub);
+    }
 }
