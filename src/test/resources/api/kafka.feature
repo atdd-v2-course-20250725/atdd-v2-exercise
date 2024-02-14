@@ -12,8 +12,8 @@
     """
     那么队列"dotnet.message"应为:
     """
-    [{
-      "name": "John"
-    }]
+    json= {
+      Name: John
+    }
     """
 
