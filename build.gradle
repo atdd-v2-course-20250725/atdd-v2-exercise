@@ -59,12 +59,22 @@ dependencies {
     testImplementation('org.mock-server:mockserver-client-java:5.13.2') {
         exclude group: 'org.skyscreamer', module: 'jsonassert'
     }
-    testImplementation 'com.github.leeonky:jfactory:0.3.20'
-    testImplementation 'com.github.leeonky:DAL-java:0.3.21'
-    testImplementation 'com.github.leeonky:jfactory-cucumber:0.1.24'
+//    testImplementation 'com.github.leeonky:jfactory:0.3.20'
+//    testImplementation 'com.github.leeonky:DAL-java:0.3.21'
+//    testImplementation 'com.github.leeonky:jfactory-cucumber:0.1.24'
+//    testImplementation 'com.github.leeonky:jfactory-repo-jpa:0.1.14'
+//    testImplementation 'com.github.leeonky:RESTful-cucumber:0.0.19'
+//    testImplementation 'com.github.leeonky:DAL-extension-basic:0.0.12'
+
+    testImplementation 'com.github.leeonky:jfactory:0.3.23'
     testImplementation 'com.github.leeonky:jfactory-repo-jpa:0.1.14'
-    testImplementation 'com.github.leeonky:RESTful-cucumber:0.0.19'
-    testImplementation 'com.github.leeonky:DAL-extension-basic:0.0.12'
+    testImplementation 'com.github.leeonky:jfactory-cucumber:0.1.31'
+    testImplementation 'com.github.leeonky:jfactory-property-value:0.0.15'
+    testImplementation 'com.github.leeonky:DAL-java:0.5.1'
+    testImplementation 'com.github.leeonky:DAL-extension-basic:0.0.16'
+    testImplementation 'com.github.leeonky:DAL-extension-jdbc:0.0.5'
+    testImplementation 'com.github.leeonky:RESTful-cucumber:0.0.21'
+
     testImplementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.11.4'
 
     testImplementation 'io.grpc:grpc-netty:1.61.1'

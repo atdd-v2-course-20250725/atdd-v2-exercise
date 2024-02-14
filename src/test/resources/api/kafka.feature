@@ -23,7 +23,23 @@
       "Password": "123456"
     }
     """
-    那么所有"用户"应为:
+    那么数据库应为:
+    """
+    ::await: {users::filter!: {user_name: Tom}}: [{
+        user_name: Tom
+        password: '123456'
+    }]
+    """
+    那么数据库应为:
+    """
+    ::eventually: {
+      users: [*, {
+        user_name: Tom
+        password: '123456'
+      }]
+    }
+    """
+    那么所有"用户"最终应为:
     """
     : [*, {
       userName: Tom
