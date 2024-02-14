@@ -14,3 +14,19 @@
     """
     queue[dotnet.message].json[]= [{Name: John}]
     """
+
+  场景: receive data from kafka
+    当向队列"dotnet.data"写入:
+    """
+    {
+      "UserName": "Tom",
+      "Password": "123456"
+    }
+    """
+    那么所有"用户"应为:
+    """
+    : [*, {
+      userName: Tom
+      password: '123456'
+    }]
+    """
