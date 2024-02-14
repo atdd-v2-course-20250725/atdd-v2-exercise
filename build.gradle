@@ -17,6 +17,7 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'war'
+apply plugin: 'idea'
 
 repositories {
     mavenCentral()
@@ -71,6 +72,7 @@ dependencies {
     testImplementation 'io.grpc:grpc-stub:1.61.1'
     testImplementation 'io.grpc:grpc-services:1.61.1'
 
+    testImplementation 'org.springframework.kafka:spring-kafka:2.6.3'
     testImplementation 'org.apache.kafka:kafka-clients:2.6.3'
 
 }
@@ -89,3 +91,10 @@ task cucumber(type: JavaExec) {
 }
 
 tasks.bootWar { enabled = false }
+
+idea {
+    module {
+        downloadJavadoc = false
+        downloadSources = false
+    }
+}

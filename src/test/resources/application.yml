@@ -17,6 +17,22 @@ spring:
         #        default_catalog: atdd
         dialect: org.hibernate.dialect.MySQL5Dialect
 
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9094
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      bootstrap-servers: localhost:9094
+      group-id: test
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring.json.trusted.packages: '*'
+
+
+
 logging.level.org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
 
 mock-server:

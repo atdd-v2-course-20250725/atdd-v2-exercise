@@ -10,10 +10,7 @@
       "name": "John"
     }
     """
-    那么队列"dotnet.message"应为:
+    那么队列应为:
     """
-    json= {
-      Name: John
-    }
+    queue[dotnet.message].json[]= [{Name: John}]
     """
-
