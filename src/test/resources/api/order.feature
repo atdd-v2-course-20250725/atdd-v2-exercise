@@ -123,3 +123,19 @@
         }
     }
     """
+
+  场景: 订单详情 - 支付信息, 通过一个 step 准备支付信息 和 其订单,
+    假如存在"订单支付信息":
+      | order.code | amount | paidAt               |
+      | SN001      | 100    | 2000-10-10T00:00:00Z |
+    当GET "/orders/SN001"
+    那么response should be:
+    """
+    body.json: {
+        code: "SN001"
+        transaction: {
+          amount: 100
+          paidAt: '2000-10-10T00:00:00Z'
+        }
+    }
+    """

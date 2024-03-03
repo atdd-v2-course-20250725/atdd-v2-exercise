@@ -2,6 +2,7 @@ package com.odde.atddv2;
 
 import com.github.leeonky.jfactory.JFactory;
 import com.github.leeonky.jfactory.repo.JPADataRepository;
+import com.odde.atddv2.entity.OrderTransaction;
 import com.odde.atddv2.entity.StandaloneOrderTransaction;
 import lombok.SneakyThrows;
 import okhttp3.OkHttpClient;
@@ -69,6 +70,9 @@ public class Factories {
                         if (object instanceof StandaloneOrderTransaction) {
                             StandaloneOrderTransaction transaction = (StandaloneOrderTransaction) object;
                             redisTemplate.opsForValue().set("TRANSACTION_" + transaction.getOrderCode(), object);
+                        } else if (object instanceof OrderTransaction) {
+                            OrderTransaction transaction = (OrderTransaction) object;
+                            redisTemplate.opsForValue().set("TRANSACTION_" + transaction.getOrder().getCode(), object);
                         } else
                             super.save(object);
                     }
