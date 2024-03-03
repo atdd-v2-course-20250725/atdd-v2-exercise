@@ -59,6 +59,7 @@ dependencies {
     testImplementation "com.github.leeonky:RESTful-cucumber"
     testImplementation 'com.github.leeonky:DAL-extension-basic'
     testImplementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.11.4'
+    testImplementation group: 'org.jsoup', name: 'jsoup', version: '1.14.3'
 }
 
 task cucumber(type: JavaExec) {

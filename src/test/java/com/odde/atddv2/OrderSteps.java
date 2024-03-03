@@ -12,6 +12,9 @@ import io.cucumber.java.zh_cn.那么;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static com.github.leeonky.dal.Assertions.expect;
+import static org.awaitility.Awaitility.await;
+
 public class OrderSteps {
 
     @Autowired
@@ -47,5 +50,12 @@ public class OrderSteps {
     public void 用如下数据录入订单(DataTable table) {
         查询订单时();
         orderPage.addOrder(table.asMaps().get(0));
+    }
+
+    @那么("订单列表页显示如下:")
+    public void 订单列表页显示如下(String dalExpression) {
+        查询订单时();
+        await().ignoreExceptions().untilAsserted(() ->
+                expect(browser.getPageSource()).should(dalExpression));
     }
 }

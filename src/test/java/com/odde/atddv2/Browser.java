@@ -67,4 +67,8 @@ public class Browser {
     private WebElement waitElement(String xpathExpression) {
         return await().ignoreExceptions().until(() -> getWebDriver().findElement(xpath(xpathExpression)), Objects::nonNull);
     }
+
+    public String getPageSource() {
+        return webDriver.getPageSource();
+    }
 }
