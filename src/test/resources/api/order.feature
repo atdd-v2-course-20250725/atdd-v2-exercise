@@ -104,3 +104,22 @@
         isSigned: "未签收"
     }
     """
+
+  场景: 订单详情 - 支付信息, 两个独立地 step 分别准备订单与其支付信息
+    假如存在"未发货的 订单":
+      | code  |
+      | SN001 |
+    假如存在"支付信息":
+      | orderCode | amount | paidAt               |
+      | SN001     | 100    | 2000-10-10T00:00:00Z |
+    当GET "/orders/SN001"
+    那么response should be:
+    """
+    body.json: {
+        code: "SN001"
+        transaction: {
+          amount: 100
+          paidAt: '2000-10-10T00:00:00Z'
+        }
+    }
+    """

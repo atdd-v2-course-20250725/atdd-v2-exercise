@@ -7,6 +7,7 @@ import io.cucumber.java.Before;
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootContextLoader;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.ContextConfiguration;
 
 import javax.annotation.PostConstruct;
@@ -21,10 +22,14 @@ public class ApplicationSteps {
     @Autowired
     private OrderRepo orderRepo;
 
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
+
     @Before(order = 1)
     public void clearDB() {
         userRepo.deleteAll();
         orderRepo.deleteAll();
+        redisTemplate.getConnectionFactory().getConnection().flushAll();
     }
 
     @Autowired

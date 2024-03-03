@@ -42,6 +42,7 @@ dependencies {
     testImplementation('org.projectlombok:lombok:1.18.18')
     testImplementation("com.squareup.okhttp3:okhttp:4.9.0")
     testImplementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    testImplementation("org.springframework.boot:spring-boot-starter-data-redis")
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation("mysql:mysql-connector-java:8.0.13")
     testImplementation("io.cucumber:cucumber-java:6.10.2")
