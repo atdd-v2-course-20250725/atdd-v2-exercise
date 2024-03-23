@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface SchoolRepo extends Repository<School, Long> {
     List<School> findAll();
+    void deleteAll();
 }
