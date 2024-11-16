@@ -19,6 +19,12 @@ gradlew.bat cucumber
 You may encounter character encoding issue in terminal. If so, please try to fix it by following this
 link https://akr.am/blog/posts/using-utf-8-in-the-windows-terminal
 
+## Additional Setup for Windows UI Automation
+
+* Install the WinAppDriver at https://github.com/microsoft/WinAppDriver/releases/tag/v1.2.1
+  * The default installation location is "C:\Program Files (x86)\Windows Application Driver"
+* After installation, run `WinAppDriver.exe` in cmd as the automation server
+
 # Run tests in Intellij
 
 * Install Intellij IDEA (either Ultimate or Community version)
