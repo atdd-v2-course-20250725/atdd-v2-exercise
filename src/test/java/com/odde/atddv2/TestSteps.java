@@ -9,6 +9,7 @@ import io.cucumber.java.zh_cn.假如;
 import io.cucumber.java.zh_cn.当;
 import io.cucumber.java.zh_cn.那么;
 import lombok.SneakyThrows;
+import org.awaitility.Awaitility;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,6 +30,10 @@ public class TestSteps {
     private String appPath;
 
     private WindowsDriver<WindowsElement> winDriver = null;
+
+    static {
+        Awaitility.setDefaultTimeout(30, TimeUnit.SECONDS);
+    }
 
     public WindowsDriver<WindowsElement> getWinDriver() {
         if (winDriver == null)
