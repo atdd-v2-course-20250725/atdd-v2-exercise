@@ -34,10 +34,8 @@ configurations {
 
 ext {
     set('springCloudVersion', "2020.0.2")
-    set('jfactory', '0.7.2')
-    set('jfactoryCucumber', '0.7.2')
-    set('jfactoryRepoJpa', '0.7.2')
     set('jsonAssertExtendComparator', '0.1.13')
+    set('jfactoryDal', '0.7.2')
 }
 
 dependencyManagement {
@@ -62,11 +60,12 @@ dependencies {
     testImplementation group: 'org.skyscreamer', name: 'jsonassert', version: '1.5.0'
     testImplementation group: 'org.mock-server', name: 'mockserver-client-java', version: '5.13.2'
     testImplementation "com.github.leeonky:JSONassert-extend-comparator:${jsonAssertExtendComparator}"
-    testImplementation "com.github.leeonky:jfactory:${jfactory}"
-    testImplementation "com.github.leeonky:jfactory-cucumber:${jfactoryCucumber}"
-    testImplementation "com.github.leeonky:jfactory-repo-jpa:${jfactoryRepoJpa}"
+    testImplementation "com.github.leeonky:jfactory:${jfactoryDal}"
+    testImplementation "com.github.leeonky:jfactory-cucumber:${jfactoryDal}"
+    testImplementation "com.github.leeonky:jfactory-repo-jpa:${jfactoryDal}"
+    testImplementation "com.github.leeonky:RESTful-cucumber:${jfactoryDal}"
+    testImplementation "com.github.leeonky:DAL-extension-basic:${jfactoryDal}"
     testImplementation "org.reflections:reflections:0.9.12"
-    testImplementation 'com.github.leeonky:bean-util:0.2.2'
     testImplementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.11.4'
 
 }
