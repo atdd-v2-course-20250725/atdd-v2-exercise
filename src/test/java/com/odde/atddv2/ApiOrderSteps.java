@@ -9,10 +9,16 @@ import io.cucumber.java.zh_cn.并且;
 import io.cucumber.java.zh_cn.当;
 import io.cucumber.java.zh_cn.那么;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.transaction.Transactional;
 
 public class ApiOrderSteps {
+    @Autowired
+    MockServer mockServer;
+
+    @Value("${binstd-endpoint.key}")
+    private String binstdAppKey;
 
     @Autowired
     private OrderRepo orderRepo;
@@ -37,5 +43,12 @@ public class ApiOrderSteps {
         Order order = orderRepo.findByCode(orderCode);
         table.asMaps().forEach(map -> order.getLines().add(objectMapper.convertValue(map, OrderLine.class).setOrder(order)));
         orderRepo.save(order);
+    }
+
+    @并且("存在快递单{string}的物流信息如下")
+    public void 存在快递单的物流信息如下(String deliverNo, String json) {
+        mockServer.getJson("/express/query", (request) -> request.withQueryStringParameter("appkey", binstdAppKey)
+                .withQueryStringParameter("type", "auto")
+                .withQueryStringParameter("number", deliverNo), json);
     }
 }
