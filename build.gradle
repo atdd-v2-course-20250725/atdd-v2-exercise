@@ -67,7 +67,7 @@ dependencies {
     testImplementation "com.github.leeonky:DAL-extension-basic:${jfactoryDal}"
     testImplementation "org.reflections:reflections:0.9.12"
     testImplementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.11.4'
-
+    testImplementation("org.springframework.boot:spring-boot-starter-data-mongodb:2.4.4")
 }
 
 task cucumber(type: JavaExec) {
