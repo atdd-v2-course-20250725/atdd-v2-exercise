@@ -4,6 +4,7 @@ import com.github.leeonky.jfactory.Spec;
 import com.github.leeonky.jfactory.Trait;
 import com.odde.atddv2.entity.Order;
 
+import static com.odde.atddv2.entity.Order.OrderStatus.delivering;
 import static com.odde.atddv2.entity.Order.OrderStatus.toBeDelivered;
 
 public class Orders {
@@ -18,6 +19,27 @@ public class Orders {
             property("status").value(toBeDelivered);
             property("deliverNo").value(null);
             property("deliveredAt").value(null);
+        }
+
+        @Trait
+        public void 已发货的() {
+            property("status").value(delivering);
+        }
+    }
+
+    public static class 订单_物流api extends 订单 {
+
+        @Override
+        public void main() {
+            property("deliverNo").ignore();
+            super.main();
+        }
+
+        @Trait
+        @Override
+        public void 已发货的() {
+            property("express").is(Expresses.快递信息.class);
+            super.已发货的();
         }
     }
 }
