@@ -27,7 +27,7 @@ public class Orders {
         }
     }
 
-    public static class 订单_物流api extends 订单 {
+    public static class 物流订单 extends 订单 {
 
         @Override
         public void main() {
